@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arman Zaher - Portfolio</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <meta name="description" content="Hi! I'm Zaher" />
+
+    <!-- ICO favicon as a fallback for browsers that don't support SVG favicons (Safari) -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Zaher's Portfolio" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Hi! I'm Zaher" />
+    <meta property="og:color" content="#da755b" />
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <div class="flex items-center space-between w-full flex-col font-medium">
+      <main
+        class="mx-auto w-full px-12 md:px-0 md:w-2/3 lg:w-1/2 2xl:w-1/3 h-full relative gap-16 py-18 flex flex-col"
+      >
+        <nav class="flex justify-between">
+          <a id="logo" href="/">
+            <h2 class="text-2xl font-semibold leading-none">zaher arman</h2>
+            <h3 class="text-base opacity-50 italic leading-none">
+              industrial and systems engineer
+            </h3>
+          </a>
+          <div id="links" class="gap-5 flex items-center">
+            <a href="https://www.linkedin.com/in/zaherarman/"
+              ><i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/zaherarman"
+              ><i class="fa-brands fa-github"></i>
+            </a>
+            <a href="mailto:a.zaher@mail.utoronto.ca"
+              ><i class="fa-solid fa-envelope"></i>
+            </a>
+          </div>
+        </nav>
+
+        <section id="content">
+          <h1 class="text-xl font-bold flex gap-2">
+            <div>Welcome!</div>
+            <div>🦦</div>
+          </h1>
+        </section>
+        
+        <section id="projects" class="md:ml-6 flex flex-col gap-10">
+
+          <div class="flex font-bold text-sm items-center gap-4">
+            <div class="hidden md:block whitespace-nowrap opacity-20">
+            Experience
+            </div>
+            <div class="line-holder">
+              <div class="smallLine smallLine1"></div>
+              <div class="smallLine smallLine2"></div>
+            </div>
+          </div>
+
+
+          <a class="flex gap-2 flex-col" href="#?blog=01" blog="01">
+            <h3 class="font-bold text-xl">University Health Network</h3>
+            <p class="opacity-50 text-sm max-w-81">
+              Operations Analyst Intern<br> 
+              <span class="text-xs"> May 2025 - Sep. 2025 </span>
+            </p>
+            <div class="flex text-sm font-bold items-center gap-2">
+              Learn More
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+
+          <a class="flex gap-2 flex-col" href="#?blog=02" blog="02">
+            <h3 class="font-bold text-xl">Bombardier Aerospace</h3>
+            <p class="opacity-50 text-sm max-w-81">
+              Program Management Analyst Intern<br> 
+              <span class="text-xs"> May 2025 - Sep. 2025 </span>
+            </p>
+            <div class="flex text-sm font-bold items-center gap-2">
+              Learn More
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <!-- Squiggly for PROJECTS-->
+          <div class="flex font-bold text-sm items-center gap-4">
+            <div class="hidden md:block whitespace-nowrap opacity-20">
+            Projects
+            </div>
+            <div class="line-holder">
+              <div class="smallLine smallLine1"></div>
+              <div class="smallLine smallLine2"></div>
+            </div>
+          </div>
+
+
+          <a class="flex gap-2 flex-col" href="https://github.com/zaherarman/mip-production-scheduling-optimization">
+            <h3 class="font-bold text-xl">Data-Driven Scheduling Optimization</h3>
+            <p class="opacity-50 text-sm max-w-81">
+              Optimized production scheduling via Python ETL and AMPL-Gurobi integration.
+            </p>
+            <div class="flex text-sm font-bold items-center gap-2">
+              Learn More
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <a class="flex gap-2 flex-col" href="https://github.com/zaherarman/solving-tsp-using-metaheuristics">
+            <h3 class="font-bold text-xl">Solving the TSP with Metaheuristics</h3>
+            <p class="opacity-50 text-sm max-w-81">
+              Built a metaheuristic-based TSP solver with ETL preprocessing and dynamic route visualization using Python.
+            </p>
+            <div class="flex text-sm font-bold items-center gap-2">
+              Learn More
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+          
+          <a class="flex gap-2 flex-col" href="https://github.com/zaherarman/multivariate-descent-solver">
+            <h3 class="font-bold text-xl">Multivariate Descent Optimization Framework</h3>
+            <p class="opacity-50 text-sm max-w-81">
+              Developed a visualization tool that processes algorithm outputs for exploring optimization landscapes interactively.
+            </p>
+            <div class="flex text-sm font-bold items-center gap-2">
+              Learn More
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <!-- Squiggly for BLOG POSTS-->
+          <div class="flex font-bold text-sm items-center gap-4">
+            <div class="hidden md:block whitespace-nowrap opacity-20">
+              Blog Posts
+            </div>
+            <div class="line-holder">
+              <div class="smallLine smallLine1"></div>
+              <div class="smallLine smallLine2"></div>
+            </div>
+          </div>
+
+          <a class="flex gap-2 flex-col" href="#?blog=10" blog="10">
+            <h3 class="font-bold text-xl">
+              My Time at Bombardier
+            </h3>
+            <div class="flex text-sm font-bold items-center gap-2">
+              Read Post
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+          
+          <a class="flex gap-2 flex-col" href="#?blog=11" blog="11">
+            <h3 class="font-bold text-xl">
+              My Time Doing Research at UHN
+            </h3>
+            <div class="flex text-sm font-bold items-center gap-2">
+              Read Post
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+        </section>
+        
+      </main>
+
+
+      <section
+        id="blog-space"
+        class="hidden mx-auto w-full px-12 md:px-0 md:w-2/3 lg:w-1/2 2xl:w-1/3 h-full relative pt-4 pb-16 flex flex-col"
+      >
+        <div class="w-full flex justify-between" id="blog-nav">
+          <a id="back" href="javascript:void(0)">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span> Back </span>
+          </a>
+        </div>
+        <div id="blog-content"></div>
+      </section>
+      <footer
+        class="flex flex-col md:flex-row justify-center gap-4 items-center font-normal text-sm pb-6 opacity-70"
+        id="footer"
+      >
+        <p style="opacity: 0">peak-a-boo</p>
+      </footer>
+    </div>
+
+    <section id="blog-01">
+      <img
+        src="./images/uhn_poster.jpg"
+        alt="UHN Poster"
+        class="w-full rounded-3xl shadow-md my-8"
+        loading="lazy"
+      />
+      <div>
+        <strong>Technology Stack: </strong>Python
+      </div>
+
+      <div>
+        PLACEHOLDER
+      </div>
+      
+      <div>
+        <h1>Simulation Lifecycle</h1>
+        <br /> PLACEHOLDER
+
+        <br />
+        <br />
+        <div class="flex w-full justify-center">
+          <div class="flex gap-6 text-center items-center font-bold text-base">
+            <div>Referral Intake</div>
+            <i class="fa-solid fa-arrow-right"></i>
+            <div>Consultation</div>
+            <i class="fa-solid fa-arrow-right"></i>
+            <div>Schedule OR</div>
+          </div>
+        </div>
+        <br />
+        PLACEHOLDER
+        <br />
+      </div>
+      <div>
+        <br /><br /> ~ zaher ✌️
+      </div>
+        
+    </section>
+
+    <section id="blog-02">
+      <img
+        src="./images/bombardier.png"
+        alt="Bombardier Logo"
+        class="w-full rounded-3xl shadow-md my-8"
+        loading="lazy"
+      />
+      <div></div>
+      <div>
+        ~ zaher✌️
+      </div>
+    </section>
+
+    <script async type="module" src="./script.js" defer></script>
+    <style>
+      #projects:not([gone-back]) > a *,
+      #projects:not([gone-back]) > div {
+        opacity: 0;
+      }
+
+      #projects > a {
+        i {
+          transition: margin 0.1s;
+        }
+
+        &:hover {
+          i {
+            margin-left: 5px;
+          }
+        }
+      }
+    </style>
+  </body>
+</html>
