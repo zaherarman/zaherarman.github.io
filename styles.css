@@ -1,5 +1,9 @@
 :root {
-  --border-color: rgb(41, 37, 36);
+  --grad-a: #f25c2b; /* bright orange */
+  --grad-b: #fa9a7b; /* peachy pink */
+  --grad-c: #6b88b5; /* soft blue */
+  --grad-d: #0f1d3d; /* deep navy */
+
 }
 
 * {
@@ -18,11 +22,12 @@
   tab-size: 4;
   -webkit-text-size-adjust: 100%;
 
-  color: rgb(41 37 36);
+  color: rgb(255, 255, 255);
 }
 
 body {
-  background-color: rgb(255, 240, 223);
+  background: transparent;
+  position: relative;
 }
 
 #links > a {
@@ -116,3 +121,28 @@ section[id^="blog-0"] {
   overflow: hidden;
   max-width: 0;
 }
+
+.gradient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  /* Smoother multi-stop vertical gradient with more easing */
+  background-image: linear-gradient(
+    to bottom,
+    var(--grad-a) 0%,
+    color-mix(in oklab, var(--grad-a) 50%, var(--grad-b)) 20%,
+    var(--grad-b) 40%,
+    color-mix(in oklab, var(--grad-b) 50%, var(--grad-c)) 60%,
+    var(--grad-c) 75%, /* Start transition from blue earlier */
+    color-mix(in oklab, var(--grad-c) 75%, var(--grad-d)) 85%, /* 25% of the way to navy */
+    color-mix(in oklab, var(--grad-c) 50%, var(--grad-d)) 92%, /* 50% of the way to navy */
+    var(--grad-d) 100%
+  ) !important; /* Use !important to override JS styles */
+  
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: var(--grad-a); /* fallback if gradients not supported */
+}
+
