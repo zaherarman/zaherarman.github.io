@@ -33,7 +33,6 @@ async function animateAndOpenDetail(detailElem, fromLoad = false) {
     );
   }
 
-  document.getElementById("content").classList.add("hidden");
   document.getElementById("projects").classList.add("hidden");
   document.getElementById("detail-space").classList.remove("hidden");
 
@@ -107,7 +106,7 @@ for (const detailLink of document.querySelectorAll("[blog], [experience]")) {
 
 async function main() {
   await animate(
-    "#logo > *, #links > *, #content > h1:first-child > *, #content > p",
+    "#logo > *, #links > *",
     {
       opacity: [0, 1],
       y: [20, 0],
@@ -159,12 +158,11 @@ document.getElementById("back").onclick = async () => {
       delay: stagger(0.05),
     },
   );
-  document.getElementById("content").classList.remove("hidden");
   document.getElementById("projects").classList.remove("hidden");
   document.getElementById("detail-space").classList.add("hidden");
   document.getElementById("projects").setAttribute("gone-back", "");
   await animate(
-    "#content > *, #projects > *",
+    "#projects > *",
     {
       opacity: [0, 1],
       x: [-50, 0],
