@@ -50,7 +50,7 @@
   color: #c1121f;
 }
 
-.Blog{
+.Article{
   color: #780000;
 }
 
@@ -141,7 +141,7 @@ body {
 }
 
 /* This rule now hides both blog and experience sections */
-section[id^="blog-"],
+section[id^="article-"],
 section[id^="experience-"] {
   opacity: 0;
   pointer-events: none;

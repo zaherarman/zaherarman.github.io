@@ -8,8 +8,8 @@ var insideDetailView = false;
 async function animateAndOpenDetail(detailElem, fromLoad = false) {
   insideDetailView = true;
 
-  const isBlog = detailElem.hasAttribute("blog");
-  const type = isBlog ? "blog" : "experience";
+  const isArticle = detailElem.hasAttribute("article");
+  const type = isArticle ? "article" : "experience";
   const id = detailElem.getAttribute(type);
 
   if (!id) return; 
@@ -92,11 +92,11 @@ async function animateAndOpenDetail(detailElem, fromLoad = false) {
   document.getElementById("footer").removeAttribute("style");
 }
 
-for (const detailLink of document.querySelectorAll("[blog], [experience]")) {
+for (const detailLink of document.querySelectorAll("[article], [experience]")) {
   detailLink.onclick = (event) => {
     event.preventDefault();
-    const detailElem = event.target.closest("[blog], [experience]");
-    const type = detailElem.hasAttribute("blog") ? "blog" : "experience";
+    const detailElem = event.target.closest("[article], [experience]");
+    const type = detailElem.hasAttribute("article") ? "article" : "experience";
     const id = detailElem.getAttribute(type);
 
     animateAndOpenDetail(detailElem);
@@ -175,11 +175,11 @@ document.getElementById("back").onclick = async () => {
 };
 
 const urlParams = new URLSearchParams(window.location.search);
-const blogId = urlParams.get("blog");
+const articleId = urlParams.get("article");
 const experienceId = urlParams.get("experience");
 
-if (blogId) {
-  const detailElem = document.querySelector(`[blog="${blogId}"]`);
+if (articleId) {
+  const detailElem = document.querySelector(`[article="${articleId}"]`);
   if (detailElem) animateAndOpenDetail(detailElem, true);
 } else if (experienceId) {
   const detailElem = document.querySelector(`[experience="${experienceId}"]`);
