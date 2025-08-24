@@ -1,13 +1,19 @@
 import {
   animate,
   stagger,
-  hover,
 } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm";
 
-var insideBlog = false;
+var insideDetailView = false;
 
-async function animateAndOpenBlog(blogid, blogElem, fromLoad = false) {
-  insideBlog = true;
+async function animateAndOpenDetail(detailElem, fromLoad = false) {
+  insideDetailView = true;
+
+  const isBlog = detailElem.hasAttribute("blog");
+  const type = isBlog ? "blog" : "experience";
+  const id = detailElem.getAttribute(type);
+
+  if (!id) return; 
+
   if (!fromLoad) {
     await animate("#footer", {
       opacity: [1, 0],
@@ -26,25 +32,38 @@ async function animateAndOpenBlog(blogid, blogElem, fromLoad = false) {
       },
     );
   }
+
   document.getElementById("content").classList.add("hidden");
   document.getElementById("projects").classList.add("hidden");
-  document.getElementById("blog-space").classList.remove("hidden");
-  const img = document.querySelector(`#blog-${blogid} > img`) || document.querySelector(`#blog-${blogid} > video`);
-  const title = blogElem.querySelector("h3").textContent;
+  document.getElementById("detail-space").classList.remove("hidden");
+
+  // *** FIX: Scroll window to the top ***
+  window.scrollTo(0, 0);
+
+  const detailParent = document.getElementById(`${type}-${id}`);
+  const img =
+    detailParent.querySelector(`img`) || detailParent.querySelector(`video`);
+  const title = detailElem.querySelector("h3").textContent;
   const content = [];
-  const blogParent = document.getElementById(`blog-${blogid}`);
-  for (const child of blogParent.children) {
+
+  for (const child of detailParent.children) {
     if (child.tagName === "IMG" || child.tagName === "VIDEO") {
       continue;
     }
     content.push(child.innerHTML);
   }
-  const contentWrapper = document.getElementById("blog-content");
+
+  const contentWrapper = document.getElementById("detail-content");
   contentWrapper.innerHTML = "";
-  contentWrapper.appendChild(img.cloneNode());
+
+  if (img) {
+    contentWrapper.appendChild(img.cloneNode());
+  }
+
   const titleElement = document.createElement("h1");
   titleElement.textContent = title;
   contentWrapper.appendChild(titleElement);
+
   for (const paragraph of content) {
     const paragraphElement = document.createElement("p");
     paragraphElement.innerHTML = paragraph;
@@ -59,8 +78,9 @@ async function animateAndOpenBlog(blogid, blogElem, fromLoad = false) {
       contentWrapper.appendChild(separator);
     }
   }
+
   await animate(
-    "#back, #blog-content > *",
+    "#back, #detail-content > *",
     {
       opacity: [0, 1],
       x: [-60, 0],
@@ -73,18 +93,17 @@ async function animateAndOpenBlog(blogid, blogElem, fromLoad = false) {
   document.getElementById("footer").removeAttribute("style");
 }
 
-for (const blog of document.querySelectorAll("[blog]")) {
-  blog.onclick = (event) => {
+for (const detailLink of document.querySelectorAll("[blog], [experience]")) {
+  detailLink.onclick = (event) => {
     event.preventDefault();
-    const blogElem = event.target.closest("[blog]");
-    const blogid = blogElem.getAttribute("blog");
-    animateAndOpenBlog(blogid, blogElem);
-    history.pushState({ blogid }, "", `?blog=${blogid}`);
+    const detailElem = event.target.closest("[blog], [experience]");
+    const type = detailElem.hasAttribute("blog") ? "blog" : "experience";
+    const id = detailElem.getAttribute(type);
+
+    animateAndOpenDetail(detailElem);
+    history.pushState({ type, id }, "", `?${type}=${id}`);
   };
 }
-
-const urlParams = new URLSearchParams(window.location.search);
-var beforeLoadBlog = urlParams.get("blog");
 
 async function main() {
   await animate(
@@ -109,7 +128,6 @@ async function main() {
       delay: stagger(0.05),
     },
   );
-
   await animate(
     "footer > *",
     {
@@ -125,11 +143,10 @@ async function main() {
 }
 
 document.getElementById("back").onclick = async () => {
-  insideBlog = false;
-  beforeLoadBlog = null;
+  insideDetailView = false;
   history.pushState({}, "", "/");
   const elements = Array.from(
-    document.querySelectorAll("#back, #blog-content > *"),
+    document.querySelectorAll("#back, #detail-content > *"),
   ).reverse();
   await animate(
     elements,
@@ -144,7 +161,7 @@ document.getElementById("back").onclick = async () => {
   );
   document.getElementById("content").classList.remove("hidden");
   document.getElementById("projects").classList.remove("hidden");
-  document.getElementById("blog-space").classList.add("hidden");
+  document.getElementById("detail-space").classList.add("hidden");
   document.getElementById("projects").setAttribute("gone-back", "");
   await animate(
     "#content > *, #projects > *",
@@ -159,19 +176,27 @@ document.getElementById("back").onclick = async () => {
   );
 };
 
-if (beforeLoadBlog) {
-  const blogElem = document.querySelector(`[blog="${beforeLoadBlog}"]`);
-  animateAndOpenBlog(beforeLoadBlog, blogElem, true);
+const urlParams = new URLSearchParams(window.location.search);
+const blogId = urlParams.get("blog");
+const experienceId = urlParams.get("experience");
+
+if (blogId) {
+  const detailElem = document.querySelector(`[blog="${blogId}"]`);
+  if (detailElem) animateAndOpenDetail(detailElem, true);
+} else if (experienceId) {
+  const detailElem = document.querySelector(`[experience="${experienceId}"]`);
+  if (detailElem) animateAndOpenDetail(detailElem, true);
 } else {
   main();
 }
 
 window.addEventListener("popstate", (event) => {
-  if (event.state && event.state.blogid) {
-    const blogElem = document.querySelector(`[blog="${event.state.blogid}"]`);
-    animateAndOpenBlog(event.state.blogid, blogElem, true);
+  if (event.state && event.state.id) {
+    const { type, id } = event.state;
+    const detailElem = document.querySelector(`[${type}="${id}"]`);
+    if (detailElem) animateAndOpenDetail(detailElem, true);
   } else {
-    if (insideBlog) {
+    if (insideDetailView) {
       document.getElementById("back").click();
     }
   }

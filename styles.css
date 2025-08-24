@@ -1,5 +1,5 @@
 :root {
-  --border-color: rgb(41, 37, 36);
+  --border-color: #c1121f;
 }
 
 * {
@@ -17,12 +17,45 @@
   -moz-tab-size: 4;
   tab-size: 4;
   -webkit-text-size-adjust: 100%;
+}
 
-  color: rgb(41 37 36);
+.Name{
+  color: #780000;
+}
+
+.Occupation{
+  color: #c1121f;
+}
+
+.Logos{
+  color: #780000;
+}
+
+#content{
+  color: #780000;
+}
+
+.CatagoryLine{
+  color: #c1121f;
+}
+
+.ExperienceTitle{
+  color:#780000}
+
+.Description{
+  color: #780000;
+}
+
+.Arrow{
+  color: #780000;
+}
+
+.Blog{
+  color: #780000;
 }
 
 body {
-  background-color: rgb(255, 240, 223);
+  background-color: #fdf0d5; 
 }
 
 #links > a {
@@ -81,7 +114,7 @@ body {
   }
 }
 
-#blog-content {
+#detail-content {
   gap: 10px;
   display: flex;
   flex-direction: column;
@@ -102,12 +135,14 @@ body {
 
   p {
     font-size: 1.1rem;
-    color: rgba(68, 40, 23, 0.6);
+    color: #a7c5d4;
     line-height: 1.5;
   }
 }
 
-section[id^="blog-0"] {
+/* This rule now hides both blog and experience sections */
+section[id^="blog-"],
+section[id^="experience-"] {
   opacity: 0;
   pointer-events: none;
   max-height: 0;
@@ -116,3 +151,4 @@ section[id^="blog-0"] {
   overflow: hidden;
   max-width: 0;
 }
+
