@@ -14,25 +14,6 @@ async function animateAndOpenDetail(detailElem, fromLoad = false) {
 
   if (!id) return; 
 
-  if (!fromLoad) {
-    await animate("#footer", {
-      opacity: [1, 0],
-      y: [0, 20],
-      blur: [0, 1],
-    });
-    await animate(
-      "#content > *, #projects > *",
-      {
-        opacity: [1, 0],
-        x: [0, -60],
-        blur: [0, 1],
-      },
-      {
-        delay: stagger(0.05),
-      },
-    );
-  }
-
   document.getElementById("projects").classList.add("hidden");
   document.getElementById("detail-space").classList.remove("hidden");
 
@@ -89,7 +70,6 @@ async function animateAndOpenDetail(detailElem, fromLoad = false) {
       delay: stagger(0.05),
     },
   );
-  document.getElementById("footer").removeAttribute("style");
 }
 
 for (const detailLink of document.querySelectorAll("[article], [experience]")) {
