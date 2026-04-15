@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
+
 :root {
-  --border-color: #c1121f;
+  --border-color: #ffffff;
 }
 
 * {
   font-family:
+    'DM Sans', /* Your new smooth creamy font */
     SF Pro,
     ui-sans-serif,
     system-ui,
@@ -20,65 +23,71 @@
 }
 
 .Name{
-  color: #780000;
+  color: #ffffff;
 }
 
 .Occupation{
-  color: #c1121f;
+  color: #ffffff;
 }
 
 .Logos{
-  color: #780000;
+  color: #ffffff;
 }
 
 #content{
-  color: #780000;
+  color: #ffffff;
 }
 
 .CatagoryLine{
-  color: #c1121f;
+  color: #ffffff;
 }
 
 .ExperienceTitle{
-  color:#780000}
+  color:#ffffff}
 
 .Description{
-  color: #780000;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Add this to make the dates even more subtle and smooth */
+.Description span {
+  color: rgba(255, 255, 255, 0.5); /* 50% white for the dates */
+  font-weight: 300; /* Makes the JetBrains Mono/DM Sans look sharper */
 }
 
 .Arrow{
-  color: #c1121f;
+  color: #ffffff;
 }
 
 .Article{
-  color: #780000;
+  color: #ffffff;
 }
 
 .ArticleArrow{
-  color: #c1121f;
+  color: #ffffff;
 }
 
 .Footer{
-  color: #780000;
+  color: #ffffff;
 }
 
 .Back{
-  color: #c1121f;
+  color: #ffffff;
 }
 
 .Course{
-  color:#780000;
+  color:#ffffff;
 }
 
 #detail-content h1,
 #detail-content h2,
 #detail-content h3 {
-  color: #780000;  /* burgundy */
+  color: #ffffff;  /* burgundy */
 }
 
 
 body {
-  background-color: rgb(255, 240, 223); 
+  background-color: #000000; 
 }
 
 #links > a {
@@ -158,7 +167,7 @@ body {
 
   p {
     font-size: 1.1rem;
-    color: #c1121f;
+    color: #ffffff;
     line-height: 1.5;
   }
 }
@@ -174,4 +183,3 @@ section[id^="experience-"] {
   overflow: hidden;
   max-width: 0;
 }
-
