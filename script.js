@@ -9,7 +9,9 @@ async function animateAndOpenDetail(detailElem, fromLoad = false) {
   insideDetailView = true;
 
   const isArticle = detailElem.hasAttribute("article");
-  const type = isArticle ? "article" : "experience";
+  const isEducation = detailElem.hasAttribute("education");
+  
+  const type = isArticle ? "article" : (isEducation ? "education" : "experience");
   const id = detailElem.getAttribute(type);
 
   if (!id) return; 
@@ -17,7 +19,6 @@ async function animateAndOpenDetail(detailElem, fromLoad = false) {
   document.getElementById("projects").classList.add("hidden");
   document.getElementById("detail-space").classList.remove("hidden");
 
-  // *** FIX: Scroll window to the top ***
   window.scrollTo(0, 0);
 
   const detailParent = document.getElementById(`${type}-${id}`);
@@ -72,11 +73,15 @@ async function animateAndOpenDetail(detailElem, fromLoad = false) {
   );
 }
 
-for (const detailLink of document.querySelectorAll("[article], [experience]")) {
+for (const detailLink of document.querySelectorAll("[article], [experience], [education]")) {
   detailLink.onclick = (event) => {
     event.preventDefault();
-    const detailElem = event.target.closest("[article], [experience]");
-    const type = detailElem.hasAttribute("article") ? "article" : "experience";
+    const detailElem = event.target.closest("[article], [experience], [education]");
+    
+    let type = "experience";
+    if (detailElem.hasAttribute("article")) type = "article";
+    if (detailElem.hasAttribute("education")) type = "education";
+    
     const id = detailElem.getAttribute(type);
 
     animateAndOpenDetail(detailElem);
@@ -157,12 +162,16 @@ document.getElementById("back").onclick = async () => {
 const urlParams = new URLSearchParams(window.location.search);
 const articleId = urlParams.get("article");
 const experienceId = urlParams.get("experience");
+const educationId = urlParams.get("education"); 
 
 if (articleId) {
   const detailElem = document.querySelector(`[article="${articleId}"]`);
   if (detailElem) animateAndOpenDetail(detailElem, true);
 } else if (experienceId) {
   const detailElem = document.querySelector(`[experience="${experienceId}"]`);
+  if (detailElem) animateAndOpenDetail(detailElem, true);
+} else if (educationId) { 
+  const detailElem = document.querySelector(`[education="${educationId}"]`);
   if (detailElem) animateAndOpenDetail(detailElem, true);
 } else {
   main();

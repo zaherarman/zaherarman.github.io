@@ -42,6 +42,10 @@
   color: #ffffff;
 }
 
+.EducationTitle{
+  color: #ffffff
+}
+
 .ExperienceTitle{
   color:#ffffff}
 
@@ -172,7 +176,8 @@ body {
 }
 
 section[id^="article-"],
-section[id^="experience-"] {
+section[id^="experience-"],
+section[id^="education-"] {
   opacity: 0;
   pointer-events: none;
   max-height: 0;
