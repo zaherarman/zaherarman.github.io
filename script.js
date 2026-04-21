@@ -129,9 +129,11 @@ async function main() {
 document.getElementById("back").onclick = async () => {
   insideDetailView = false;
   history.pushState({}, "", "/");
+  
   const elements = Array.from(
     document.querySelectorAll("#back, #detail-content > *"),
   ).reverse();
+  
   await animate(
     elements,
     {
@@ -143,14 +145,21 @@ document.getElementById("back").onclick = async () => {
       delay: stagger(0.05),
     },
   );
+
+  const projectItems = document.querySelectorAll("#projects > a *, #projects > div");
+  projectItems.forEach(el => el.style.opacity = "0");
+
+  document.getElementById("projects").setAttribute("gone-back", "");
   document.getElementById("projects").classList.remove("hidden");
   document.getElementById("detail-space").classList.add("hidden");
-  document.getElementById("projects").setAttribute("gone-back", "");
+  
+  window.scrollTo(0, 0);
+
   await animate(
-    "#projects > *",
+    "#projects > a *, #projects > div",
     {
       opacity: [0, 1],
-      x: [-50, 0],
+      x: [-20, 0],
       blur: [1, 0],
     },
     {
