@@ -1,25 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
-
 :root {
   --border-color: #ffffff;
 }
 
 * {
   font-family:
-    'DM Sans',
-    SF Pro,
-    ui-sans-serif,
-    system-ui,
-    sans-serif,
-    Apple Color Emoji,
-    Segoe UI Emoji,
-    Segoe UI Symbol,
-    Noto Color Emoji;
+    "Source Serif 4",
+    Georgia,
+    "Times New Roman",
+    serif;
+  font-optical-sizing: auto;
   font-feature-settings: normal;
   font-variation-settings: normal;
   -moz-tab-size: 4;
   tab-size: 4;
   -webkit-text-size-adjust: 100%;
+}
+
+.CatagoryLine,
+.Arrow,
+.ArticleArrow,
+.Back,
+#back,
+.Description span,
+#links {
+  font-family: "Inter", system-ui, sans-serif;
 }
 
 .Name{
