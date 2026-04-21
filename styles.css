@@ -21,6 +21,7 @@
 .ArticleArrow,
 .Back,
 #back,
+#back span,
 .Description span,
 #links {
   font-family: "Inter", system-ui, sans-serif;
